@@ -22,7 +22,8 @@ namespace MongoDB
 
         public List<T> GetRecords<T>(string tableName)
         {
-            return db.GetCollection<T>(tableName).Find(new BsonDocument()).ToList();
+            var collection = db.GetCollection<T>(tableName);
+            return collection.Find(new BsonDocument()).ToList();
         }
 
         public T GetRecordById<T>(string tableName, Guid id)

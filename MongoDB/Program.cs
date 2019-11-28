@@ -39,6 +39,15 @@ namespace MongoDB
             var updatedUserById = db.GetRecordById<PersonModel>("Users", new Guid("fc62abc6-de18-496a-b06c-e60dba881eeb"));
             Console.WriteLine($"fc62abc6-de18-496a-b06c-e60dba881eeb = { updatedUserById.Id} | {updatedUserById} | {updatedUserById.DateOfBirth}");
 
+            Console.WriteLine("---------------------------------");
+
+            Console.WriteLine("NameModel (just names)");
+            var usersNames = db.GetRecords<NameModel>("Users"); //from Users!!!
+            usersNames.ForEach(userName =>
+            {
+                Console.WriteLine($"{userName.FirstName} {userName.LastName} ");
+            });
+
             Console.ReadKey();
         }
     }
